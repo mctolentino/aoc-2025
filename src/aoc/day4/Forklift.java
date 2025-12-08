@@ -21,7 +21,7 @@ public class Forklift {
 
     public static void main(String[] args) {
         var grid2 = parseInput(SAMPLE);
-        var grid = parseInput(Utils.getStringFromFile("/Users/uc65ml/Developer/Projects/aoc/src/aoc/day4/input1.txt"));
+        var grid = parseInput(Utils.getStringFromFile("src/aoc/day4/input1.txt"));
 
         System.out.println("-----------");
         gridPrinter(grid);

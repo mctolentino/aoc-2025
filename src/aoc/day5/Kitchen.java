@@ -24,7 +24,7 @@ public class Kitchen {
 
 
     public static void main(String[] args) {
-        var TEST = Utils.getStringFromFile("input1.txt");
+        var TEST = Utils.getStringFromFile("src/aoc/day5/input1.txt");
         var kitchenInventory = getInventory(TEST);
 //        var kitchenInventory = getInventory(SAMPLE);
 

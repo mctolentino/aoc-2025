@@ -18,7 +18,7 @@ public class Joltage {
 
     public static void main(String[] args) {
         List<String> batteries = parseInput(sampleInput);
-        List<String> batteriesFromFile = Utils.getStringsFromFile("/Users/uc65ml/Developer/Projects/aoc/src/aoc/day3/input1.txt");
+        List<String> batteriesFromFile = Utils.getStringsFromFile("src/aoc/day3/input1.txt");
         List<Long> highestJoltages = batteriesFromFile.stream().map(Joltage::getHighestJoltageSecond).toList();
         var sum = highestJoltages.stream().mapToLong(Long::longValue).sum();
         System.out.println("Sum of highest joltages: " + sum);

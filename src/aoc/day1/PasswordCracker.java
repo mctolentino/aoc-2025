@@ -13,7 +13,7 @@ public class PasswordCracker {
     static int INITIAL_VALUE = 50;
 
     public static void main(String[] args) {
-        List<String> rotations = Utils.getStringsFromFile("/Users/uc65ml/Developer/Projects/aoc/src/aoc/day1/input.txt");
+        List<String> rotations = Utils.getStringsFromFile("src/aoc/day1/input.txt");
 
         var currentIndex = INITIAL_VALUE;
         var zeroCounter = 0;

@@ -25,4 +25,13 @@ public class Utils {
         }
         return strings;
     }
+
+    public static void gridPrinter(String[][] grid) {
+        for (String[] row : grid) {
+            for (String cell : row) {
+                System.out.print(cell + " ");
+            }
+            System.out.println();
+        }
+    }
 }

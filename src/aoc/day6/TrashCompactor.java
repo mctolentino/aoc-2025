@@ -20,7 +20,7 @@ public class TrashCompactor {
         processGrid(grid);
 
         System.out.println("-------------- Part 1 - File");
-        var gridF = parseInput(Utils.getStringFromFile("/Users/maki/dev/projects/aoc-2025/src/aoc/day6/input1.txt"));
+        var gridF = parseInput(Utils.getStringFromFile("src/aoc/day6/input1.txt"));
         processGrid(gridF);
 
         System.out.println("-------------- Part 2 - Sample");
@@ -107,7 +107,7 @@ public class TrashCompactor {
             gridList.add(row + " ".repeat(maxRowSize - row.length()));
         }
 
-        List<Long> digitsAccummulator = new ArrayList<>();
+        List<Long> digitsAccumulator = new ArrayList<>();
         var currentOperator = "";
         var currentDigit = "";
 
@@ -121,22 +121,21 @@ public class TrashCompactor {
             }
             currentDigit = digit.toString();
 
-
             if (currentDigit.isBlank()) {
                 if ("*".equals(currentOperator)) {
-                    var product = digitsAccummulator.stream().reduce(1L, (a, b) -> a * b);
+                    var product = digitsAccumulator.stream().reduce(1L, (a, b) -> a * b);
 //                    System.out.println("Product: " + product);
                     total.add(product);
                 } else if ("+".equals(currentOperator)) {
-                    var sum = digitsAccummulator.stream().reduce(0L, Long::sum);
+                    var sum = digitsAccumulator.stream().reduce(0L, Long::sum);
 //                    System.out.println("Sum: " + sum);
                     total.add(sum);
                 } else {
                     throw new RuntimeException("Unsupported operator: " + currentOperator);
                 }
-                digitsAccummulator.clear();
+                digitsAccumulator.clear();
             } else {
-                digitsAccummulator.add(Long.parseLong(currentDigit.trim()));
+                digitsAccumulator.add(Long.parseLong(currentDigit.trim()));
             }
         }
 
@@ -144,12 +143,4 @@ public class TrashCompactor {
         System.out.println(totalSum);
     }
 
-    static void gridPrinter(String[][] grid) {
-        for (String[] row : grid) {
-            for (String cell : row) {
-                System.out.print(cell + " ");
-            }
-            System.out.println();
-        }
-    }
 }
