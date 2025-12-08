@@ -34,12 +34,12 @@ public class TrashCompactor {
     }
 
     private static String[][] parseInput(String input) {
-        String[] rows = input.split("\n");
+        var rows = input.split("\n");
         var numberOfItems = rows[0].split("\\s+").length;
-        String[][] grid = new String[rows.length][numberOfItems];
+        var grid = new String[rows.length][numberOfItems];
 
         for (int i = 0; i < rows.length; ++i) {
-            String[] columns = rows[i].trim().split("\\s+");
+            var columns = rows[i].trim().split("\\s+");
             System.arraycopy(columns, 0, grid[i], 0, numberOfItems);
         }
 
@@ -91,7 +91,7 @@ public class TrashCompactor {
     }
 
     private static void processGridCephalopodMath(String[] grid) {
-        List<Long> total = new ArrayList<>();
+        var total = new ArrayList<Long>();
 
         int maxRowSize = 0;
         for (String row : grid) {
@@ -102,12 +102,12 @@ public class TrashCompactor {
         maxRowSize++;
         System.out.println("> max row size: " + maxRowSize);
 
-        List<String> gridList = new ArrayList<>();
+        var gridList = new ArrayList<String>();
         for (String row : grid) {
             gridList.add(row + " ".repeat(maxRowSize - row.length()));
         }
 
-        List<Long> digitsAccumulator = new ArrayList<>();
+        var digitsAccumulator = new ArrayList<Long>();
         var currentOperator = "";
         var currentDigit = "";
 
@@ -115,7 +115,7 @@ public class TrashCompactor {
             var operator = String.valueOf(gridList.get(gridList.size() - 1).charAt(i));
             if (!operator.isBlank()) currentOperator = operator;
 
-            StringBuilder digit = new StringBuilder();
+            var digit = new StringBuilder();
             for (int j = 0; j < gridList.size() - 1; j++) {
                 digit.append(gridList.get(j).charAt(i));
             }

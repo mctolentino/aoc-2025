@@ -91,8 +91,8 @@ public class Forklift {
     }
 
     private static String[][] parseInput(String input) {
-        String[] lines = input.split("\n");
-        String[][] grid = new String[lines.length][lines[0].length()];
+        var lines = input.split("\n");
+        var grid = new String[lines.length][lines[0].length()];
         for (int i = 0; i < lines.length; i++) {
             for (int j = 0; j < lines[i].length(); j++) {
                 grid[i][j] = lines[i].charAt(j) + "";

@@ -2,23 +2,22 @@ package aoc.day1;
 
 import aoc.Utils;
 
-import java.util.List;
-
 public class PasswordCracker {
 
-//    static String[] rotations = {"L68", "L30", "R48", "L5", "R60", "L55", "L1", "L99", "R14", "L82"};
+    static String[] SAMPLE = {"L68", "L30", "R48", "L5", "R60", "L55", "L1", "L99", "R14", "L82"};
 
     static int LOWER_LIMIT = 0;
     static int UPPER_LIMIT = 99;
     static int INITIAL_VALUE = 50;
 
     public static void main(String[] args) {
-        List<String> rotations = Utils.getStringsFromFile("src/aoc/day1/input.txt");
+        var TEST = Utils.getStringsFromFile("src/aoc/day1/input.txt");
 
         var currentIndex = INITIAL_VALUE;
         var zeroCounter = 0;
 
-        for (String rotation : rotations) {
+//        for (String rotation : TEST) {
+        for (String rotation : SAMPLE) {
             var counterValues = processStep(currentIndex, rotation);
             currentIndex = counterValues.currentIndex;
             zeroCounter += counterValues.zeroClicksCounter;
@@ -33,24 +32,6 @@ public class PasswordCracker {
         System.out.println("Final Current Index value: " + currentIndex);
         System.out.println("Zero Counter value: " + zeroCounter);
     }
-
-//    static int processStep(int currentIndex, String rotation) {
-//        var step = parseStep(rotation);
-//        var relevantValue = step.value % 100;
-//
-//        if (step.rotation.equals("L")) {
-//            currentIndex -= relevantValue;
-//            if (currentIndex < LOWER_LIMIT) {
-//                currentIndex = UPPER_LIMIT + 1 + currentIndex;
-//            }
-//        } else if (step.rotation.equals("R")) {
-//            currentIndex += relevantValue;
-//            if (currentIndex > UPPER_LIMIT) {
-//                currentIndex = (UPPER_LIMIT + 1 - currentIndex);
-//            }
-//        }
-//        return currentIndex;
-//    }
 
     static CounterValues processStep(int currentIndex, String rotation) {
         var step = parseStep(rotation);

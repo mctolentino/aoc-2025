@@ -17,9 +17,9 @@ public class Joltage {
             """;
 
     public static void main(String[] args) {
-        List<String> batteries = parseInput(sampleInput);
-        List<String> batteriesFromFile = Utils.getStringsFromFile("src/aoc/day3/input1.txt");
-        List<Long> highestJoltages = batteriesFromFile.stream().map(Joltage::getHighestJoltageSecond).toList();
+        var batteries = parseInput(sampleInput);
+        var batteriesFromFile = Utils.getStringsFromFile("src/aoc/day3/input1.txt");
+        var highestJoltages = batteriesFromFile.stream().map(Joltage::getHighestJoltageSecond).toList();
         var sum = highestJoltages.stream().mapToLong(Long::longValue).sum();
         System.out.println("Sum of highest joltages: " + sum);
     }
@@ -67,16 +67,20 @@ public class Joltage {
                                     if (maxJolt >= parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + zpad(5))) continue;
                                     for (int p = o + 1; p < input.length(); p++) {
                                         char d8 = input.charAt(p);
-                                        if (maxJolt >= parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + zpad(4))) continue;
+                                        if (maxJolt >= parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + zpad(4)))
+                                            continue;
                                         for (int q = p + 1; q < input.length(); q++) {
                                             char d9 = input.charAt(q);
-                                            if (maxJolt >= parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + zpad(3))) continue;
+                                            if (maxJolt >= parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + zpad(3)))
+                                                continue;
                                             for (int r = q + 1; r < input.length(); r++) {
                                                 char d10 = input.charAt(r);
-                                                if (maxJolt >= parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10 + zpad(2))) continue;
+                                                if (maxJolt >= parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10 + zpad(2)))
+                                                    continue;
                                                 for (int s = r + 1; s < input.length(); s++) {
                                                     char d11 = input.charAt(s);
-                                                    if (maxJolt >= parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10 + d11 + zpad(1))) continue;
+                                                    if (maxJolt >= parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10 + d11 + zpad(1)))
+                                                        continue;
                                                     for (int t = s + 1; t < input.length(); t++) {
                                                         char d12 = input.charAt(t);
                                                         var currentJolt = parseLong("" + d1 + d2 + d3 + d4 + d5 + d6 + d7 + d8 + d9 + d10 + d11 + d12);

@@ -60,7 +60,7 @@ public class Kitchen {
             }
         }
 
-        long sum = processedRanges.stream().map(r -> r.endId - r.startId + 1).reduce(0L, Long::sum);
+        var sum = processedRanges.stream().map(r -> r.endId - r.startId + 1).reduce(0L, Long::sum);
         System.out.println("Calculated sum: " + sum);
 
     }
@@ -69,10 +69,10 @@ public class Kitchen {
         if (ranges.isEmpty()) return ranges;
         ranges.sort((a, b) -> Long.compare(a.startId, b.startId));
         var merged = new ArrayList<FreshRange>();
-        FreshRange prev = ranges.get(0);
+        var prev = ranges.get(0);
 
         for (int i = 1; i < ranges.size(); i++) {
-            FreshRange curr = ranges.get(i);
+            var curr = ranges.get(i);
             if (curr.startId <= prev.endId + 1) {
                 prev = new FreshRange(prev.startId, Math.max(prev.endId, curr.endId));
             } else {
@@ -87,7 +87,7 @@ public class Kitchen {
     static void processKitchenProduce(KitchenInventory kitchenInventory) {
         var counter = 0;
 
-        for (Long currentId : kitchenInventory.getProduceIds()) {
+        for (var currentId : kitchenInventory.getProduceIds()) {
             for (FreshRange freshRange : kitchenInventory.getFreshRanges()) {
                 if (currentId >= freshRange.startId && currentId <= freshRange.endId) {
                     counter++;
@@ -125,20 +125,20 @@ public class Kitchen {
     }
 
     static KitchenInventory getInventory(String input) {
-        List<FreshRange> freshRanges = new ArrayList<>();
-        List<Long> productIds = new ArrayList<>();
-        String[] inputArray = input.split("\n");
+        var freshRanges = new ArrayList<FreshRange>();
+        var productIds = new ArrayList<Long>();
+        var inputArray = input.split("\n");
         boolean doneRanges = false;
 
-        for (int i = 0; i < inputArray.length; i++) {
-            if (inputArray[i].equals("")) {
+        for (String s : inputArray) {
+            if (s.isEmpty()) {
                 doneRanges = true;
                 continue;
             }
             if (!doneRanges) {
-                freshRanges.add(FreshRange.toRange(inputArray[i]));
+                freshRanges.add(FreshRange.toRange(s));
             } else {
-                productIds.add(Long.parseLong(inputArray[i]));
+                productIds.add(Long.parseLong(s));
             }
         }
         return new KitchenInventory(freshRanges, productIds);
@@ -154,9 +154,9 @@ public class Kitchen {
         }
 
         static FreshRange toRange(String rawRange) {
-            String[] range = rawRange.split("-");
-            Long startId = Long.parseLong(range[0]);
-            Long endId = Long.parseLong(range[1]);
+            var range = rawRange.split("-");
+            var startId = Long.parseLong(range[0]);
+            var endId = Long.parseLong(range[1]);
             return new FreshRange(startId, endId);
         }
 

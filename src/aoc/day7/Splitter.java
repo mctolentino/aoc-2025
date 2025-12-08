@@ -2,8 +2,6 @@ package aoc.day7;
 
 import aoc.Utils;
 
-import java.util.List;
-
 import static aoc.Utils.gridPrinter;
 
 public class Splitter {
@@ -29,9 +27,9 @@ public class Splitter {
 
     public static void main(String[] args) {
 //        List<String> currentGrid = List.of(SAMPLE.split("\n"));
-        List<String> currentGrid = Utils.getStringsFromFile("src/aoc/day7/input1.txt");
+        var currentGrid = Utils.getStringsFromFile("src/aoc/day7/input1.txt");
 
-        String[][] processedGrid = new String[currentGrid.size()][currentGrid.getFirst().length()];
+        var processedGrid = new String[currentGrid.size()][currentGrid.getFirst().length()];
         int splitCounter = 0;
 
         for (int i = 0; i < currentGrid.size(); i++) {
@@ -77,7 +75,7 @@ public class Splitter {
 
         System.out.println("---------- Part 2");
 
-        long[][] memo = new long[processedGrid.length][processedGrid[0].length];
+        var memo = new long[processedGrid.length][processedGrid[0].length];
 
         for (int i = 1; i < processedGrid.length; i++) {
             for (int j = 0; j < processedGrid[0].length; j++) {
@@ -86,20 +84,20 @@ public class Splitter {
                     memo[i][j] = 1;
                 }
                 if (currentValue.equals("^")) {
-                    memo[i][j-1] += memo[i-1][j];
-                    memo[i][j+1] += memo[i-1][j];
+                    memo[i][j - 1] += memo[i - 1][j];
+                    memo[i][j + 1] += memo[i - 1][j];
                 }
                 if (currentValue.equals("|")) {
-                    memo[i][j] += memo[i-1][j];
+                    memo[i][j] += memo[i - 1][j];
                 }
             }
 
         }
 
         long total = 0;
-        for (int i = 0; i < memo[processedGrid.length-1].length; i++) {
-            System.out.print("[" + memo[processedGrid.length-1][i] + "]");
-            total += memo[processedGrid.length-1][i];
+        for (int i = 0; i < memo[processedGrid.length - 1].length; i++) {
+            System.out.print("[" + memo[processedGrid.length - 1][i] + "]");
+            total += memo[processedGrid.length - 1][i];
         }
         System.out.println();
         System.out.println("Total : " + total);

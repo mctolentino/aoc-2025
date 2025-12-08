@@ -2,7 +2,6 @@ package aoc.day2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class GiftShop2 {
 
@@ -13,8 +12,8 @@ public class GiftShop2 {
     private static String INPUT = "24-46,124420-259708,584447-720297,51051-105889,6868562486-6868811237,55-116,895924-1049139,307156-347325,372342678-372437056,1791-5048,3172595555-3172666604,866800081-866923262,5446793-5524858,6077-10442,419-818,57540345-57638189,2143479-2274980,683602048-683810921,966-1697,56537997-56591017,1084127-1135835,1-14,2318887654-2318959425,1919154462-1919225485,351261-558210,769193-807148,4355566991-4355749498,809094-894510,11116-39985,9898980197-9898998927,99828221-99856128,9706624-9874989,119-335";
 
     public static void main(String[] args) {
-        List<String> ranges = Arrays.stream(INPUT.split(",")).toList();
-        List<Long> invalidIds = new ArrayList<>();
+        var ranges = Arrays.stream(INPUT.split(",")).toList();
+        var invalidIds = new ArrayList<Long>();
 
         for (String range : ranges) {
 
@@ -37,7 +36,7 @@ public class GiftShop2 {
     }
 
     private static boolean isInvalidGiftCode(long code) {
-        String codeStr = String.valueOf(code);
+        var codeStr = String.valueOf(code);
         var currentDigit = "";
         var currentDigitCounter = 0;
         var matched = false;
@@ -54,7 +53,7 @@ public class GiftShop2 {
             currentDigitCounter++;
         }
 
-       return false;
+        return false;
     }
 
     private static Range parseRange(String rangeStr) {

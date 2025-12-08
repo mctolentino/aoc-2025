@@ -13,7 +13,7 @@ public class Utils {
     }
 
     public static List<String> getStringsFromFile(String filePath) {
-        List<String> strings = new ArrayList<>();
+        var strings = new ArrayList<String>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
